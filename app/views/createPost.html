@@ -1,0 +1,31 @@
+<form name="postForm" class="postForm" md-theme="red" novalidate>
+	<md-text-float label="Titel" ng-model="post.title" name="title" required></md-text-float>
+    <div ng-show="postForm.title.$invalid && submitted" class="validationError">
+    	<div ng-show="postForm.title.$error.required">
+            De titel moet ingevuld zijn
+        </div>
+    </div>
+    <div class="textareaGroup used">      
+        <textarea ng-model="post.text" name="text"  class="bigTextarea" required></textarea> 
+        <span class="textareaHighlight"></span>
+        <span class="textAreaBar"></span>
+        <label>{{ getTextLabel() }}</label>
+    </div>
+    <div ng-show="postForm.text.$invalid && submitted" class="validationError">
+    	<div ng-show="postForm.text.$error.required">
+            De {{ getTextLabel() }} moet ingevuld zijn
+        </div>
+    </div>
+    <div ng-show="post.postType === 'activiteit'">
+        <md-text-float label="Locatie" ng-model="post.location"></md-text-float>
+        <md-text-float class="disable-animation" label="Datum" type="date" ng-model="post.date"></md-text-float>
+        <md-text-float type="time" label="Start tijd" ng-model="post.startTime" class="disable-animation"></md-text-float>
+        <md-text-float type="time" label="Eind tijd" ng-model="post.endTime" class="disable-animation"></md-text-float>
+    </div>
+    <p>Selecteer wat type post dit is:</p>
+    <p><select 
+        ng-model="post.postType" 
+        ng-options="type.postType as type.postType for type in types">
+    </select></p>
+    <md-button class="md-raised md-primary" md-theme="red" ng-click="submit()">Aanmaken</md-button>
+</form>

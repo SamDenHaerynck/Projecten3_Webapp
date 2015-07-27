@@ -1,0 +1,21 @@
+<div ng-controller="NavCtrl" layout="vertical" layout-fill>
+    <md-toolbar md-theme="red" class="md-whiteframe-z1">
+        <div class="md-toolbar-tools">
+            <button ng-click="openLeftMenu()" class="openMenu" hide-lg>
+                <md-icon icon="images/icons/ic_menu_24px.svg">
+                    <object data="images/icons/ic_menu_24px.svg" class="md-icon"></object>
+                </md-icon>
+            </button>
+            <span><a href="/">Joetz VZW</a></span>
+            <span flex></span>
+            <span><a ng-href="#/login" id="navLogin">Inloggen</a></span>
+
+
+            <span ng-show="isAuthorized()" id="login">
+                <img src="images/icons/account_box.png" class="account_box_icon" />
+                {{ user.email }} | <a href="" ng-click="logout()">Uitloggen</a>
+            </span>
+        </div>
+
+    </md-toolbar>
+</div>

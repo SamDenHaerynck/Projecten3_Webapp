@@ -1,0 +1,838 @@
+body, html, #page-content-wrapper, #wrapper, .sidenav-section {
+    height: 100%;
+}
+.lookLikeP {
+    margin: 20px;
+}
+.textareaGroup {
+    position: relative;
+    margin-bottom: 45px;
+}
+.textareaGroup div {
+    height: 0px;
+}
+textarea {
+    margin-top: 35px;
+    margin-bottom: 0px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    height: 100px;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+}
+.bigTextarea {
+    height: 300px;
+}
+textarea:focus {
+    outline: none;
+}
+.textareaGroup label {
+    color: #CACACA;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+}
+.textAreaBar {
+    position: relative;
+    display: block;
+    width: 90%;
+}
+.textAreaBar:before, .textAreaBar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #E51C23;
+    transition: 0.2s ease all;
+}
+.textAreaBar:before {
+    left: 50%;
+}
+.textAreaBar:after {
+    right: 50%;
+}
+textarea:focus ~ .textAreaBar:before, textarea:focus ~ .textAreaBar:after {
+    width: 50%;
+}
+.textareaHighlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+textarea:focus ~ .textareaHighlight {
+    animation: inputHighlighter 0.3s ease;
+}
+.textareaGroup textarea:focus ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #E51C23;
+}
+.used textarea:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #E51C23;
+}
+//input type [date]
+.disable-animation label {
+    -webkit-transform: translate3d(0, 4px, 0) scale(0.75);
+    transform: translate3d(0, 4px, 0) scale(0.75);
+}
+md-sidenav {
+    min-height: 100%;
+    position: absolute;
+    padding: 0;
+    top: 64;
+    padding-bottom: 5000px;
+    margin-bottom: -5000px;
+}
+.openMenu {
+    background: none repeat scroll 0% 0% transparent;
+    border: none;
+    padding-top: 5px;
+}
+#page-content-wrapper {
+    flex-direction: row;
+}
+#logo {
+    background: url("../images/logo.jpg") no-repeat;
+    height: 200px;
+    width: 304px;
+}
+#sidenav-top-list {
+    list-style: none;
+    padding: 0 0 15px 0;
+    margin: 20px 0 0 0;
+    border-bottom: 1px solid #ddd;
+}
+#sidenav-top-list a {
+    width: 304px;
+    height: 60px;
+    display: block;
+    text-indent: 10px;
+    line-height: 60px;
+    font-style: none;
+    font-size: 1.04em;
+    text-decoration: none;
+    color: #333;
+}
+#sidenav-top-list a:hover {
+    background: #ccc;
+}
+#sidenav-top-list a:visited {
+    color: #333;
+}
+#sidenav-top-list a:before {
+    align-content: center;
+    padding: 0 30px 10px 0;
+    display: inline-block;
+    vertical-align: middle;
+    height: 52px;
+}
+#sidenav-top-list a.home:before {
+    content: url("../images/icons/home.png");
+}
+#sidenav-top-list a.camps:before {
+    content: url("../images/icons/briefcase.png");
+}
+#sidenav-top-list a.contact:before {
+  content: url("../images/icons/contact.png");
+}
+#sidenav-top-list a.forum:before {
+    content: url("../images/icons/forum.png");
+}
+#sidenav-top-list a.managecamps:before {
+    content: url("../images/icons/pencil.png");
+}
+
+#sidenav-top-list a.manageusers:before{
+    content: url("../images/icons/users.png");
+}
+.sidenavContact li{
+  list-style: none;
+}
+.sidenavContact h4{
+  margin-bottom: 0;
+}
+
+.textArea input {
+    word-break: break-word;
+    height: 200px;
+}
+.signupform .submitButtonDiv {
+    max-width: 800px;
+    text-align: center;
+}
+.signupform p {
+    display: flex;
+}
+.signupform .flex {
+    display: flex;
+}
+.signupform md-card md-content {
+    padding-left: 20px;
+}
+.signupform md-card {
+    max-width: 800px;
+}
+.signupform p .text-next-to-input {
+    margin: 35px 0px 0px 10px;
+}
+.signupform md-input-group.long > input {
+    width: 300px;
+}
+.signupform md-input-group.short > input {
+    width: 100px;
+}
+.signupform .extraInfo {
+    color: #C2C2C2;
+}
+.signupform .textArea {
+    width: 100%;
+    height: 150px;
+}
+.signupform md-button {} .sticker {
+    margin: 20px 20px 20px 50px;
+}
+.signupform .validationError {
+    color: red;
+}
+.disable-animation label {
+    -webkit-transform: translate3d(0, 4px, 0) scale(0.75);
+    transform: translate3d(0, 4px, 0) scale(0.75);
+}
+.flexcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    //justify-content: center;
+}
+.campWrapper.ng-enter {
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.campWrapper.ng-leave {
+    animation: fadeOut 1s;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@media only screen and (max-width: 1060px) {
+    .flexcontainer {
+        flex-direction: row;
+    }
+    .signupform .flex {
+        display: block;
+    }
+}
+.flexcontainer a {
+    text-decoration: none;
+    color: black;
+}
+.imgWrapper {
+    position: relative;
+    max-width: 400px;
+}
+.description {
+    position: absolute;
+    //top: 0px;
+    bottom: 3px;
+    font-size: 100%;
+    color: #fff;
+    padding: 0 20px;
+    width: 100%;
+    line-height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+.description.Zomer {
+    background: rgba(248, 209, 70, 0.6);
+}
+.description.Herfst {
+    background: rgba(180, 27, 31, 0.6);
+}
+.description.Krokus {
+    background: rgba(21, 136, 203, 0.6);
+}
+.description.Winter {
+    background: rgba(21, 136, 203, 0.6);
+}
+.description.Pasen {
+    background: rgba(13, 117, 55, 0.6);
+}
+.description.Lente {
+    background: rgba(13, 117, 55, 0.6);
+}
+.description h2 {
+    font-weight: normal;
+}
+#age {
+    margin-bottom: 10px;
+}
+.campInfo {
+    margin-left: 15%;
+    text-transform: uppercase;
+}
+.campCard p {
+    margin: 0px;
+    padding-left: 5%;
+}
+.campCard p:last-child {
+    margin-top: 5%;
+    text-align: right;
+    padding-right: 2%;
+    color: red;
+}
+.campCard {
+    padding: 0px;
+}
+//filtering camps
+.filters {
+    display: block;
+    width: 100%;
+}
+.seasonFilter {
+    padding-left: 16px;
+}
+.filters img {
+    height: 63px;
+    width: 63px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    opacity: 0.5;
+    cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+  .filters img{
+    max-width:62px;
+  }
+}
+.filters img.activeSeason {
+    opacity: 1;
+}
+.ageInput {
+    float: left;
+    margin-left: 10%;
+}
+.filters input.activeAge {
+    opacity: 1;
+    background-color: rgb(226, 28, 35);
+    color: white;
+}
+.tooltipZomer {
+    margin-left: 90px;
+}
+.tooltipHerfst {
+    margin-left: 155px;
+}
+.tooltipWinter {
+    margin-left: 217px;
+}
+.tooltipLente {
+    margin-left: 282px;
+}
+@media only screen and (min-width: 1199px) {
+  .tooltipZomer {
+    margin-left: 110px;
+  }
+  .tooltipHerfst {
+    margin-left: 174px;
+  }
+  .tooltipWinter {
+    margin-left: 237px;
+  }
+  .tooltipLente {
+    margin-left: 300px;
+  }
+  .tooltipAll{
+    margin-left:45px;
+  }
+}
+//Showcamp
+.infoShowCamp {
+    max-width: 792px;
+}
+.inschrijvenShowCamp {
+    max-width: 800px;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+.infoShowCamp p {
+    margin: 0px 0px 0px 50px;
+}
+.infoShowCamp table {
+    margin: 0px 0px 0px 50px;
+}
+.tableCol2 {
+    padding-left: 10%;
+}
+//Slider showCamp
+.bss-slides {
+    position: relative;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    max-width: 800px;
+}
+.bss-slides img {
+    max-width: 100%;
+    height: auto;
+}
+.bss-slides:focus {
+    outline: 0;
+}
+.bss-slides figure {
+    position: absolute;
+    top: 0;
+    margin: 0px;
+}
+.bss-slides figure:first-child {
+    position: relative;
+}
+.bss-slides figure img {
+    opacity: 0;
+    -webkit-transition: opacity 1.2s;
+    transition: opacity 1.2s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.bss-slides .bss-show img {
+    opacity: 1;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.bss-slides figcaption {
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 175%;
+    bottom: .75em;
+    left: .35em;
+    padding: .25em;
+    color: #fff;
+    background: #000;
+    background: rgba(0, 0, 0, .5);
+    border-radius: 2px;
+    opacity: 0;
+    -webkit-transition: opacity 1.2s;
+    transition: opacity 1.2s;
+}
+.bss-slides .bss-show figcaption {
+    z-index: 2;
+    opacity: 1;
+}
+.bss-slides figcaption a {
+    color: #fff;
+}
+.bss-next, .bss-prev {
+    color: #fff;
+    position: absolute;
+    background: #000;
+    background: rgba(0, 0, 0, .6);
+    top: 50%;
+    z-index: 1;
+    font-size: 2em;
+    margin-top: -1.2em;
+    opacity: .3;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.bss-next:hover, .bss-prev:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+.bss-next {
+    right: -1px;
+    padding: 10px 5px 15px 10px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.bss-prev {
+    left: 0;
+    padding: 10px 10px 15px 5px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.bss-fullscreen {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, .4) url(../images/slider/arrows-alt_ffffff_64.png);
+    -webkit-background-size: contain;
+    background-size: contain;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    opacity: .3;
+}
+.bss-fullscreen:hover {
+    opacity: .8;
+}
+:-webkit-full-screen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+:-moz-full-screen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    background-size: contain;
+}
+:-ms-fullscreen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    background-size: contain;
+}
+:full-screen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+:-webkit-full-screen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+:-moz-full-screen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    background-size: contain;
+}
+:-ms-fullscreen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    background-size: contain;
+}
+:fullscreen .bss-fullscreen {
+    background: rgba(0, 0, 0, .4) url(../images/slider/compress_ffffff_64.png);
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+//login
+#navLogin {
+    color: #e51c23;
+}
+#loginWrapper {
+    margin: 0 0 0 2%;
+}
+.loginform md-button {
+    margin-top: 5px;
+}
+.validationError {
+    padding: 10px 20px 10px 15px;
+    background: #ff9b9b;
+    color: #b41919;
+    -webkit-transition: all linear 1s;
+    transition: all linear 1s;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.validationError:hover {
+    background: #ff7575;
+}
+span#login {
+    font-size: 0.65em;
+    line-height: 22px;
+}
+.account_box_icon {
+    margin: 0 5px 0 0;
+    vertical-align: bottom;
+    display: inline-block;
+}
+.validationError {} .validationError.ng-hide {
+    opacity: 0;
+}
+.error-icon {
+    display: inline-block;
+}
+//startPage
+.populair {
+    width: 100%;
+    height: auto;
+}
+.seizoen {
+    background-color: #d5f3f8;
+    width: 100%;
+    height: auto;
+}
+.welkom {
+    width: 100%;
+    height: 300px;
+}
+.welkom h1 {
+    text-align: center;
+}
+.startPageCamp {
+    flex-direction: row;
+    display: inline-flex;
+}
+.startPageLogo {
+    margin-top: 2%;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.masonry {
+    width: 999px;
+    margin: 0 auto;
+}
+.myContent {
+    -moz-column-count: 3;
+    -moz-column-gap: 0px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 0px;
+    column-count: 3;
+    column-gap: 0px;
+    width: 999px;
+}
+.myContent .imgWrapper {
+    display: inline-block;
+    max-width: 100%;
+}
+.myContent .imgWrapper img {
+    max-width: 100%;
+}
+.myContent .imgWrapper .description {
+    bottom: 0px;
+}
+.startPageWrapper {
+    max-width: 999px;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 1199px + 304px), only screen and (max-device-width: 1199px + 304px) {
+    .myContent {
+        width: 100%;
+    }
+    .masonry {
+        width: 100%;
+    }
+    .startPageWrapper {
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 799px), only screen and (max-device-width: 799px) {
+    .myContent {
+        -moz-column-count: 2;
+        -moz-column-gap: 0px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 0px;
+        column-count: 2;
+        column-gap: 0px;
+        width: 100%;
+    }
+    .masonry {
+        width: 100%;
+    }
+    .startPageWrapper {
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 420px), only screen and (max-device-width: 420px) {
+    .myContent {
+        -moz-column-count: 1;
+        -moz-column-gap: 0px;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 0px;
+        column-count: 1;
+        column-gap: 0px;
+        width: 100%;
+    }
+    .masonry {
+        width: 100%;
+    }
+    .startPageWrapper {
+        max-width: 100%;
+    }
+}
+#season .Zomer {
+    background: rgb(248, 209, 70);
+    color: white;
+}
+#season .Herfst {
+    background: rgb(180, 27, 31);
+    color: white;
+}
+#season .Krokus {
+    background: rgb(21, 136, 203);
+    color: white;
+}
+#season .Winter {
+    background: rgb(21, 136, 203);
+    color: white;
+}
+#season .Pasen {
+    background: rgb(13, 117, 55);
+    color: white;
+}
+#season .Lente {
+    background: rgb(13, 117, 55);
+    color: white;
+}
+//Forum
+
+.postContent a {
+    text-decoration: none;
+    color: black;
+}
+.postContent h3 {
+    font-weight: 500;
+}
+.postContent h4 {
+    opacity: 0.7;
+}
+.postContent .icon {
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    width: 48px;
+    margin: 16px;
+    opacity: 0.6;
+}
+#btnNewPost {
+    margin: 2%;
+}
+.md-tile-content {} .bericht {} .activiteit {} //Create post
+.postForm {
+    margin-left: 2%;
+}
+.filterCat{
+  display:inline-block;
+  margin-left:2.5%;
+}
+.filterCat a {
+  display:inline-block;
+  cursor:pointer;
+  text-align: center;
+  min-width: 111px;
+}
+#firstCat{
+  min-width:0;
+  margin-right: 31.5px;
+}
+.filterCat a img.icon{
+  margin:0;
+}
+.filterCat a img.activeCat{
+  opacity: 1;
+  border:1px solid grey;
+}
+.filterCat .filterText{
+  text-align: center;
+}
+
+//Post page
+
+.postPage .icon {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 36px;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+.postPage h4 {
+  margin-bottom:1px;
+}
+.postPage p,table {
+  margin-top:1px;
+  padding-left:2%;
+}
+.postPage .postPageActivity table{
+  margin-bottom:1px;
+}
+.postPage .postPageActivity .content{
+  display:inline-block;
+}
+.postPage .postPageActivity .title{
+  display:inline-block;
+}
+#lastPost{
+  margin-bottom: 2%;
+}
+#commentContainer{
+  padding: 2% 2% 2%;
+  background-color: rgb(224, 224, 224);
+  margin:0;
+}
+#commentContainer h2{
+  margin-top:0;
+}
+#commentContainer #date{
+  font-weight:300;
+}
+#commentContainer #name{
+  font-weight:600;
+}
+.postPage #postCard{
+  padding:0;
+}
+.postPage #infoWrapper{
+  padding-left:2%;
+  padding-right:2%;
+}
+.postPage #comments{
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top:1px solid grey;
+}
+#typeInfo{
+  font-size: smaller;
+  font-weight:300;
+}
+
+
+//user control page
+
+.noDecoration{
+  text-decoration: none;
+  color: #555555;
+  cursor: pointer;
+
+  &:visited{
+    color: #555555;
+  }
+}
+
+.userItem{
+  h3, h4{
+    display: inline-block;
+    padding-left:50px;
+    min-width:150px;
+    max-width:150px;
+    margin:0;
+  }
+
+}
+#newUser{
+  margin-top: 2%;
+  margin-left:1%;
+}
+.passwordReset {
+    color:#333;
+    font-size: 0.9em;
+}
+//camp control page
+.featuredCamps{
+  margin-top:0;
+  margin-bottom:0;
+}
+.featuredInfo{
+  margin-left:2%;
+}

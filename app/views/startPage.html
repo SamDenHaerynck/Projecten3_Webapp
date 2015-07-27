@@ -1,0 +1,61 @@
+<div class="startPageWrapper">
+<div class="welkom">
+  <img class="startPageLogo" src="images/Joetz_partnervanBM.jpg"/>
+  <h1>Ga op vakantie met Joetz!</h1>
+</div>
+<div class="populair">
+
+  <md-toolbar md-theme="red" >
+
+    <h1 class="md-toolbar-tools">
+      <span>Populair</span>
+    </h1>
+
+  </md-toolbar>
+
+
+</div>
+  <div class="masonry">
+    <div class="myContent">
+
+      <div class="imgWrapper" ng-repeat="camp in filteredCamps = (camps | filter: {isFeatured : '1'})">
+        <a ng-href="#/camps/{{camp.id}}">
+          <img src="http://project-groep6.azurewebsites.net/public/img/camps/{{camp.location}}" >
+          <div class="description ">
+            <h2>{{camp.title}}</h2>
+          </div>
+        </a>
+      </div>
+      <div class="emptyList" ng-hide="filteredCamps.length">Geen kampen beschikbaar</div>
+    </div>
+  </div>
+
+  <div class="populair" id="season">
+
+    <md-toolbar md-theme="red" class="{{season()}}" >
+
+      <h1 class="md-toolbar-tools">
+
+        <span>Dit seizoen</span>
+
+      </h1>
+
+    </md-toolbar>
+
+
+  </div>
+  <div class="masonry">
+    <div class="myContent">
+
+      <div class="imgWrapper" ng-repeat="camp in filteredCamps = (camps | filter: {period : season()})">
+        <a ng-href="#/camps/{{camp.id}}">
+          <img src="http://project-groep6.azurewebsites.net/public/img/camps/{{camp.location}}" >
+          <div class="description ">
+            <h2>{{camp.title}}</h2>
+          </div>
+        </a>
+      </div>
+      <div class="emptyList" ng-hide="filteredCamps.length">Geen kampen beschikbaar dit seizoen</div>
+    </div>
+  </div>
+</div>

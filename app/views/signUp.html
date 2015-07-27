@@ -1,0 +1,339 @@
+<form class="signupform" md-theme="red" name="signupForm" novalidate>
+    <md-card>
+	    <md-toolbar class="md-theme-light" ng-click="changeCard(1)">
+	        <h1 class="md-toolbar-tools">
+	            <span>Is de deelnemer lid van de socialistische mutualiteiten?</span>
+	        </h1>
+	    </md-toolbar>
+	    <md-content ng-show="currentCard === 1" ng-form="memberForm">
+	        <md-radio-group ng-model="isMemberGroup" ng-click="emptyMemberFields()">
+	            <md-radio-button value="true">Ja</md-radio-button>
+	            <md-radio-button value="false">Nee</md-radio-button>
+	        </md-radio-group>
+	        <div ng-show="isMemberStuffShown()">
+	            <p>Noteer hieronder de gegevens van de ouder bij wie de deelnemer ten laste staat</p>
+	            <p><md-text-float focus-on="card1" label="Aansluitingsnummer" ng-model="registration.memberNumber1" name="memberNumber1" is-member-validator member-number></md-text-float><span class="extraInfo text-next-to-input"> vb. 309/1234567</span></p>
+	            <div ng-show="memberForm.memberNumber1.$invalid && submitted" class="validationError">
+		        	<div ng-show="memberForm.memberNumber1.$error.isMemberValidator">
+			            Het aansluitingsnummer moet ingevuld zijn als je lid bent
+			        </div>
+			        <div ng-show="memberForm.memberNumber1.$error.memberNumber">
+			            Dit moet een geldig aansluitingnummer zijn (zie voorbeeld)
+			        </div>
+		        </div>
+	            <span class="extraInfo">Het aansluitingsnummer en de code gerechtigde zijn te vinden op het roze klevertje van de mutualiteit.</span>
+		        <div class="flex">
+		            <div>
+		                <p><img ng-src="{{ srcPink }}" alt="{{altPink}}">Aansluitingsnummer<span class="extraInfo">vb. 309/1234567</span></p>
+		                <p><img ng-src="{{srcGreen}}" alt="{{altGreen}}">Code gerechtigde<span class="extraInfo">vb. 110/110</span></p>
+		                <p><img ng-src="{{srcBlue}}" alt="{{altBlue}}">Rijksregisternummer<span class="extraInfo">vb. 12345678910</span></p>
+		            </div>
+		            <div class="sticker">
+		                <img ng-src="{{srcSticker}}" alt="{{altSticker}}" ng-click="enableTestData()">
+		            </div>
+	            </div>
+	            <p>Aansluitingsnummer van de 2de ouder, bij Bond Moyson West-Vlaanderen</p>
+	            <md-text-float label="Aansluitingsnummer" ng-model="registration.memberNumber2" name="memberNumber2" member-number></md-text-float>
+				<div ng-show="memberForm.memberNumber2.$invalid && submitted" class="validationError">
+			        <div ng-show="memberForm.memberNumber2.$error.memberNumber">
+			            Dit moet een geldig aansluitingnummer zijn
+			        </div>
+		        </div>
+	        </div>
+	        <md-button class="md-raised md-primary" ng-click="subformSubmit(memberForm)">Volgende</md-button>
+	    </md-content>
+	</md-card>
+	<md-card>
+	    <md-toolbar class="md-theme-light" ng-click="changeCard(2)">
+	        <h1 class="md-toolbar-tools">
+	            <span>Gegevens van de contactpersoon</span>
+	        </h1>
+	    </md-toolbar>
+
+	    <md-content ng-show="currentCard === 2" ng-form="parent1Form">
+	        <md-text-float focus-on="card2" label="Rijksregisternummer" ng-model="registration.parents[0].natNr" name="parent0NatNr" nat-number required number ></md-text-float>
+	        <div ng-show="parent1Form.parent0NatNr.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0NatNr.$error.required">
+		            Het rijksregisternummer moet ingevuld zijn
+		        </div>
+		        <div ng-show="parent1Form.parent0NatNr.$error.natNumber">
+		            Het rijksregister moet 11 karakters lang zijn
+		        </div>
+		        <div ng-show="parent1Form.parent0NatNr.$error.number">
+		            Het rijksregister mag geen letters of leestekens bevatten
+		        </div>
+	        </div>
+	        <md-text-float label="Voornaam" ng-model="registration.parents[0].fName" name="parent0FName" required></md-text-float>
+	        <div ng-show="parent1Form.parent0FName.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0FName.$error.required">
+		            De voornaam moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float label="Naam" ng-model="registration.parents[0].lName" name="parent0LName" required></md-text-float>
+	        <div ng-show="parent1Form.parent0LName.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0LName.$error.required">
+		            De naam moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float label="Straat" ng-model="registration.parents[0].street" class="long" name="parent0Street" required></md-text-float>
+	        <div ng-show="parent1Form.parent0Street.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0Street.$error.required">
+		            De straatnaam moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float label="Nr." ng-model="registration.parents[0].nr" class="short" name="parent0Nr" required></md-text-float>
+	        <div ng-show="parent1Form.parent0Nr.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0Nr.$error.required">
+		            Het huisnummer moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float label="Bus" ng-model="registration.parents[0].bus" class="short"></md-text-float>
+	        <md-text-float label="Gemeente" ng-model="registration.parents[0].place" name="parent0Place" required></md-text-float>
+	        <div ng-show="parent1Form.parent0Place.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0Place.$error.required">
+		            De gemeente moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float label="Postcode" ng-model="registration.parents[0].postal" class="short" name="parent0Postal" required></md-text-float>
+	        <div ng-show="parent1Form.parent0Postal.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0Postal.$error.required">
+		            De postcode moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float label="E-mail" ng-model="registration.parents[0].mail" class="long" name="parent0Mail" required emailaddress></md-text-float>
+	        <div ng-show="parent1Form.parent0Mail.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0Mail.$error.required">
+		            Het e-mailadres moet ingevuld zijn
+		        </div>
+		        <div ng-show="parent1Form.parent0Mail.$error.emailaddress">
+		            Gelieve een geldig e-mailadres in te voeren
+		        </div>
+	        </div>
+	        <md-text-float label="Tel. of GSM" ng-model="registration.parents[0].phone" name="parent0Phone" required></md-text-float>
+	        <div ng-show="parent1Form.parent0Phone.$invalid && submitted" class="validationError">
+	        	<div ng-show="parent1Form.parent0Phone.$error.required">
+		            Het telefoonnummer moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-button class="md-raised md-primary" ng-click="subformSubmit(parent1Form)">Volgende</md-button>
+	    </md-content>
+    </md-card>
+    <md-card>
+	    <md-toolbar class="md-theme-light" ng-click="changeCard(3)">
+	        <h1 class="md-toolbar-tools">
+	            <span>Gegevens van de ouder die de vakantie betaalt</span>
+	        </h1>
+	    </md-toolbar>
+
+	    <md-content ng-show="currentCard === 3" ng-form="parent2Form">
+
+	    	<p>Is de contactpersoon ook de betalende ouder?</p>
+
+			<md-radio-group ng-model="isParentSame"  ng-click="emptyParentFields()">
+	            <md-radio-button value="true">Ja</md-radio-button>
+	            <md-radio-button value="false">Nee</md-radio-button>
+	        </md-radio-group>
+
+	        <div  ng-show="isSecondParentShown()">
+
+		        <md-text-float focus-on="card3" label="Rijksregisternummer" ng-model="registration.parents[1].natNr" name="parent1NatNr" is-parent-same-validator nat-number number></md-text-float>
+		        <div ng-show="parent2Form.parent1NatNr.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1NatNr.$error.isParentSameValidator">
+			            Het rijksregisternummer moet ingevuld zijn
+			        </div>
+			        <div ng-show="parent2Form.parent1NatNr.$error.natNumber">
+			            Het rijksregister moet 11 karakters lang zijn
+			        </div>
+			        <div ng-show="parent2Form.parent1NatNr.$error.number">
+			            Het rijksregister mag geen letters of leestekens bevatten
+			        </div>
+		        </div>
+		        <md-text-float label="Voornaam" name="parent1FName" ng-model="registration.parents[1].fName" is-parent-same-validator></md-text-float>
+		        <div ng-show="parent2Form.parent1FName.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1FName.$error.isParentSameValidator">
+			            De voornaam moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float label="Naam" name="parent1LName" ng-model="registration.parents[1].lName" is-parent-same-validator></md-text-float>
+		        <div ng-show="parent2Form.parent1LName.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1LName.$error.isParentSameValidator">
+			            De naam moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float label="Straat" name="parent1Street" ng-model="registration.parents[1].street" class="long" is-parent-same-validator></md-text-float>
+		        <div ng-show="parent2Form.parent1Street.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1Street.$error.isParentSameValidator">
+			            De straatnaam moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float label="Nr." name="parent1Nr" ng-model="registration.parents[1].nr" class="short" is-parent-same-validator></md-text-float>
+		        <div ng-show="parent2Form.parent1Nr.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1Nr.$error.isParentSameValidator">
+			            Het huisnummer moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float label="Bus" ng-model="registration.parents[1].bus" class="short" is-parent-same-validator></md-text-float>
+		        <md-text-float label="Gemeente" name="parent1Place" ng-model="registration.parents[1].place" is-parent-same-validator></md-text-float>
+		        <div ng-show="parent2Form.parent1Place.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1Place.$error.isParentSameValidator">
+			            De gemeente moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float label="Postcode" name="parent1Postal" ng-model="registration.parents[1].postal" class="short" is-parent-same-validator></md-text-float>
+		        <div ng-show="parent2Form.parent1Postal.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1Postal.$error.isParentSameValidator">
+			            De postcode moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float label="E-mail" name="parent1Mail" type="email" ng-model="registration.parents[1].mail" class="long" is-parent-same-validator emailaddress></md-text-float>
+		        <div ng-show="parent2Form.parent1Mail.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1Mail.$error.isParentSameValidator">
+			            Het e-mailadres moet ingevuld zijn
+			        </div>
+			        <div ng-show="parent2Form.parent1Mail.$error.emailaddress">
+			            Gelieve een geldig e-mailadres in te voeren
+			        </div>
+		        </div>
+		        <md-text-float label="Tel. of GSM" name="parent1Phone" ng-model="registration.parents[1].phone" is-parent-same-validator></md-text-float>
+		        <div ng-show="parent2Form.parent1Phone.$invalid && submitted" class="validationError">
+		        	<div ng-show="parent2Form.parent1Phone.$error.isParentSameValidator">
+			            Het telefoonnummer moet ingevuld zijn
+			        </div>
+		        </div>
+	        </div>
+	        <md-button class="md-raised md-primary" ng-click="subformSubmit(parent2Form)">Volgende</md-button>
+	    </md-content>
+    </md-card>
+    <md-card>
+	    <md-toolbar class="md-theme-light" ng-click="changeCard(4)">
+	        <h1 class="md-toolbar-tools">
+	            <span>Gegevens van de deelnemer</span>
+	        </h1>
+	    </md-toolbar>
+	    <md-content ng-show="currentCard === 4" ng-form="participantForm">
+    		<md-item ng-repeat="participant in registration.participants" ng-form="repeatForm">
+    			<md-text-float name="participantNatNr" label="Rijksregisternummer" ng-model="participant.natNr" required number nat-number></md-text-float>
+    			<div ng-show="repeatForm.participantNatNr.$invalid && submitted" class="validationError">
+		        	<div ng-show="repeatForm.participantNatNr.$error.required">
+			            Het rijksregisternummer moet ingevuld zijn
+			        </div>
+			        <div ng-show="repeatForm.participantNatNr.$error.natNumber">
+			            Het rijksregister moet 11 karakters lang zijn
+			        </div>
+			        <div ng-show="repeatForm.participantNatNr.$error.number">
+			            Het rijksregister mag geen letters of leestekens bevatten
+			        </div>
+		        </div>
+    			<md-text-float name="participantFName" label="Voornaam" ng-model="participant.fName" required></md-text-float>
+    			<div ng-show="repeatForm.participantFName.$invalid && submitted" class="validationError">
+		        	<div ng-show="repeatForm.participantFName.$error.required">
+			            De voornaam moet ingevuld zijn
+			        </div>
+		        </div>
+	        	<md-text-float name="participantLName" label="Naam" ng-model="participant.lName" required></md-text-float>
+	        	<div ng-show="repeatForm.participantLName.$invalid && submitted" class="validationError">
+		        	<div ng-show="repeatForm.participantLName.$error.required">
+			            De naam moet ingevuld zijn
+			        </div>
+		        </div>
+	        	<p><md-text-float name="participantBDate" type="date" class="disable-animation" label="Geboortedatum" ng-model="participant.birthdate" required></md-text-float><span class="extraInfo text-next-to-input"> vb. 25-01-2000</span></p>
+	        	<div ng-show="repeatForm.participantBDate.$invalid && submitted" class="validationError">
+		        	<div ng-show="repeatForm.participantBDate.$error.required">
+			            De geboortedatum moet ingevuld zijn
+			        </div>
+		        </div>
+    		</md-item>
+    		<a ng-click="registration.participants.push({})"><img ng-src="{{ srcPlus }}" alt="{{altPlus}}"> 
+    		Klik hier als je <b>meerdere deelnemers</b> wil inschrijven</a><br />
+    		<p class="extraInfo">Enkel als deze bij dezelfde persoon ten laste staan en verblijven op hetzelfde adres</p>
+    		<a ng-click="registration.participants.pop()" ng-show="registration.participants.length !== 1"><img ng-src="{{ srcMin }}" alt="{{altMin}}"> Klik hier als je <b>de laatste deelnemer</b> wil verwijderen</a><br />
+    		<p>Is het adres van de deelnemer hetzelfde als dat van de contactpersoon?</p>
+    		<md-radio-group ng-model="isAddressSame"  ng-click="emptyAddressFields()">
+	            <md-radio-button value="true">Ja</md-radio-button>
+	            <md-radio-button value="false">Nee</md-radio-button>
+	        </md-radio-group>
+	        <div ng-show="isSecondAddressShown()">
+	        	<p>Adres van de deelnemer</p>
+		        <md-text-float  focus-on="card4" name="participantStreet" label="Straat" ng-model="registration.street" class="long" is-address-same-validator></md-text-float>
+		        <div ng-show="participantForm.participantStreet.$invalid && submitted" class="validationError">
+		        	<div ng-show="participantForm.participantStreet.$error.isAddressSameValidator">
+			            De straatnaam moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float name="participantNr" label="Nr." ng-model="registration.nr" class="short" is-address-same-validator></md-text-float>
+		        <div ng-show="participantForm.participantNr.$invalid && submitted" class="validationError">
+		        	<div ng-show="participantForm.participantNr.$error.isAddressSameValidator">
+			            Het huisnummer moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float label="Bus" ng-model="registration.bus" class="short"></md-text-float>
+		        <md-text-float name="participantPlace" label="Gemeente" ng-model="registration.place" is-address-same-validator></md-text-float>
+		        <div ng-show="participantForm.participantPlace.$invalid && submitted" class="validationError">
+		        	<div ng-show="participantForm.participantPlace.$error.isAddressSameValidator">
+			            De gemeente moet ingevuld zijn
+			        </div>
+		        </div>
+		        <md-text-float  name="participantPostal" label="Postcode" ng-model="registration.postal" class="short" is-address-same-validator></md-text-float>
+		        <div ng-show="participantForm.participantPostal.$invalid && submitted" class="validationError">
+		        	<div ng-show="participantForm.participantPostal.$error.isAddressSameValidator">
+			            De postcode moet ingevuld zijn
+			        </div>
+		        </div>
+	        </div>
+	        <md-button class="md-raised md-primary" ng-click="subformSubmit(participantForm)">Volgende</md-button>
+	    </md-content>
+    </md-card>
+    <md-card>
+	    <md-toolbar class="md-theme-light" ng-click="changeCard(5)">
+	        <h1 class="md-toolbar-tools">
+	            <span>Persoon te contacteren in geval van nood</span>
+	        </h1>
+	    </md-toolbar>
+
+	    <md-content ng-show="currentCard === 5" ng-form="emergencyForm">
+	        <md-text-float focus-on="card5" name="emergencyContact0FName" label="Voornaam" ng-model="registration.emergencyContacts[0].fName" required></md-text-float>
+	        <div ng-show="emergencyForm.emergencyContact0FName.$invalid && submitted" class="validationError">
+	        	<div ng-show="emergencyForm.emergencyContact0FName.$error.required">
+		            De voornaam moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float name="emergencyContact0LName" label="Naam" ng-model="registration.emergencyContacts[0].lName" required></md-text-float>
+	        <div ng-show="emergencyForm.emergencyContact0LName.$invalid && submitted" class="validationError">
+	        	<div ng-show="emergencyForm.emergencyContact0LName.$error.required">
+		            De naam moet ingevuld zijn
+		        </div>
+	        </div>
+	        <md-text-float name="emergencyContact0Phone" label="Tel. of GSM" ng-model="registration.emergencyContacts[0].phone" required></md-text-float>
+	        <div ng-show="emergencyForm.emergencyContact0Phone.$invalid && submitted" class="validationError">
+	        	<div ng-show="emergencyForm.emergencyContact0Phone.$error.required">
+		            Het telefoonnummer moet ingevuld zijn
+		        </div>
+	        </div>
+	        <p><div ng-show="secondEmergencyContactTrue" ng-click="secondEmergencyContactTrue = false; emergencyContacts.put({}); timedBroadcast('secondEmergencyContact')"><img ng-src="{{ srcPlus }}" alt="{{altPlus}}"> Klik hier om een 2de contactpersoon op te geven</div></p>
+	        <div ng-show="!secondEmergencyContactTrue">
+	        	<p>Tweede contactpersoon:</p>
+	        	<md-text-float focus-on="secondEmergencyContact" label="Voornaam" ng-model="registration.emergencyContacts[1].fName" class="short"></md-text-float>
+		        <md-text-float label="Naam" ng-model="registration.emergencyContacts[1].lName" class="short"></md-text-float>
+		        <md-text-float label="Tel. of GSM" ng-model="registration.emergencyContacts[1].phone"></md-text-float>
+	        </div>
+	        <md-button class="md-raised md-primary" ng-click="subformSubmit(emergencyForm)">Volgende</md-button>
+	    </md-content>
+    </md-card>
+    <md-card>
+	    <md-toolbar class="md-theme-light" ng-click="changeCard(6)">
+	        <h1 class="md-toolbar-tools">
+	            <span>Extra informatie</span>
+	        </h1>
+	    </md-toolbar>
+	    <md-content ng-show="currentCard === 6">
+	    	<p>Geef hier informatie die u belangrijk vindt voor de reservering en die u niet kan meegeven in het invulformulier</p>
+		    <div class="textareaGroup used" focus-on="card6">
+	            <textarea ng-model="registration.extraInfo"  focusonnotrequired></textarea>
+	            <span class="textareaHighlight"></span>
+	            <span class="textAreaBar"></span>
+	            <label>Extra informatie</label>
+	        </div>
+	    	<md-button class="md-raised md-primary" ng-click="submit()">Inschrijven</md-button>
+	    </md-content>
+    </md-card>
+</form>

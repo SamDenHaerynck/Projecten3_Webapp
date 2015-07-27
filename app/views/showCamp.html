@@ -1,0 +1,70 @@
+<md-content md-theme="red">
+    <div class="bss-slides" id="campImages">
+    </div>
+    <md-card class="infoShowCamp">
+        <md-toolbar>
+            <h1 class="md-toolbar-tools">
+                <span>Informatie</span>
+            </h1>
+        </md-toolbar>
+        <div class="">
+            <div class="lookLikeP">{{camp.promotext}}</div>
+            <md-button ng-show="(!camp.showFull) && parentView" class="md-raised md-primary inschrijvenShowCamp" ng-href="#/camps/{{camp.id}}/signup">Inschrijven</md-button>
+            <md-button class="md-raised md-primary" ng-click="enableParentView()">{{parentViewButtonText}}</md-button>
+            <div ng-show="camp.showPlaces">
+                <p style="color:red">Wees er snel bij! Nog slechts {{camp.placesLeft}} plaatsen beschikbaar.</p>
+            </div>
+            <div ng-show="camp.showFull">
+                <p style="color:red">Helaas dit kamp is volzet.</p>
+            </div>
+            <div ng-show="parentView">
+                <md-subheader class="md-primary">Periode</md-subheader>
+                <p>{{camp.period}}</p>
+                <md-subheader class="md-primary">Plaats</md-subheader>
+                <p>{{camp.city}}</p>
+                <p>{{camp.place}}</p>
+                <md-subheader class="md-primary">Prijs</md-subheader>
+                <table>
+                    <tr>
+                        <td>Basisprijs:</td>
+                        <td class="tableCol2">€{{camp.price}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eén ouder lid van Bond Moyson West-Vlaanderen: </td>
+                        <td class="tableCol2">€{{camp.starPrice1}}</td>
+                    </tr>
+                    <tr>
+                        <td>Beide ouders lid van Bond Moyson West-Vlaanderen: </td>
+                        <td class="tableCol2">€{{camp.starPrice2}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fiscaal aftrekbaar?</td>
+                        <td class="tableCol2">{{camp.isDeductible}}</td>
+                    </tr>
+                </table>
+                <md-subheader class="md-primary">Transport</md-subheader>
+                <p>{{camp.transport}}</p>
+                <md-subheader class="md-primary">In de prijs inbegrepen</md-subheader>
+                <table>
+                    <tr ng-repeat="item in camp.groups.includeditems">
+                        <td>- {{ item.itemText }}</td>
+                    </tr>
+                </table>
+                <md-subheader class="md-primary">Leeftijdsgroepen</md-subheader>
+                <table>
+                    <tr ng-repeat="item in camp.groups.ages">
+                        <td>- Groep {{$index + 1}}: van {{ item.minAge }} tot {{ item.maxAge }} jaar</td>
+                    </tr>
+                </table>
+                <md-subheader class="md-primary">Wanneer</md-subheader>
+                <table>
+                    <tr ng-repeat="item in camp.groups.timespans">
+                        <td>- Groep {{$index + 1}}: van {{ item.startDate | date:"dd/MM/yyyy" }} tot {{ item.endDate | date:"dd/MM/yyyy" }}</td>
+                    </tr>
+                </table>
+                <md-subheader class="md-primary">Extra</md-subheader>
+                <p>{{camp.extraInfo}}</p>
+            </div>
+        </div>
+    </md-card>
+</md-content>

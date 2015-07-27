@@ -1,0 +1,47 @@
+<md-card class="postContent">
+  <md-subheader>Filteren op categorie</md-subheader>
+  <div class="filterCat">
+    <a id="firstCat" ng-click="activeCat='all'; setActive('all')">
+      <img ng-src="images/icons/allCat.png" class="icon" ng-class="{'activeCat': isActive('all')}">
+      <div class="filterText">
+        <span>Alle</span>
+      </div>
+    </a>
+    <a ng-click="activeCat='activiteit'; setActive('activiteit')">
+      <img ng-src="images/icons/activiteit.png" class="icon" ng-class="{'activeCat': isActive('activiteit')}">
+      <div class="filterText">
+        <span>Activiteit</span>
+      </div>
+    </a>
+    <a ng-click="activeCat='bericht'; setActive('bericht')">
+      <img ng-src="images/icons/bericht.png" class="icon" ng-class="{'activeCat': isActive('bericht')}">
+      <div class="filterText">
+        <span>Bericht</span>
+      </div>
+    </a>
+    <a ng-click="activeCat='nieuwsbericht'; setActive('nieuwsbericht')">
+      <img ng-src="images/icons/nieuwsbericht.png" class="icon" ng-class="{'activeCat': isActive('nieuwsbericht')}">
+      <div class="filterText">
+        <span>Nieuwsbericht</span>
+      </div>
+    </a>
+  </div>
+</md-card>
+<md-button id="btnNewPost" class="md-raised md-primary" md-theme="red" ng-click="createPost()">Maak een nieuw bericht of activiteit</md-button>
+<md-list>
+  <md-item class="postContent" ng-repeat="post in posts | filter: categorieFilter">
+    <md-item-content>
+    <div class="md-tile-left">
+      <img ng-src="images/icons/{{post.postType}}.png" class="icon">
+    </div>
+    <div class="md-tile-content">
+      <a ng-href="#/forum/{{post.id}}">
+        <h3>{{post.title}}</h3>
+        <h4>{{post.postType}}</h4>
+        <h4>Geplaatst door {{post.firstname}} {{post.lastname}} op {{post.timestampFormatted | date:"dd/MM/yyyy 'om' HH:mm"}} </h4>
+      </a>
+    </div>
+    </md-item-content>
+
+  </md-item>
+</md-list>

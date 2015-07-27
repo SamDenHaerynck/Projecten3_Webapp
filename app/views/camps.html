@@ -1,0 +1,39 @@
+<md-content class="flexcontainer">
+    <md-card class="filters">
+      <md-subheader>Seizoen</md-subheader>
+      <div class="seasonFilter">
+        <a ng-click="query = ''; setActive('all')"><img ng-class="{'activeSeason': isActive('all')}" src="images/icons/allSeasons.png"/><md-tooltip class="tooltipAll">Alle seizoenen</md-tooltip></a>
+        <a ng-click="query = 'ZOMER'; setActive('Zomer')"><img ng-class="{'activeSeason': isActive('Zomer')}" src="images/icons/zomer.png"/><md-tooltip class="tooltipZomer">Zomer</md-tooltip></a>
+        <a ng-click="query = 'HERFST'; setActive('Herfst')"><img ng-class="{'activeSeason': isActive('Herfst')}" src="images/icons/herfst.png"/><md-tooltip class="tooltipHerfst">Herfst</md-tooltip></a>
+        <a ng-click="query = 'KROKUS'; setActive('Krokus')"><img ng-class="{'activeSeason': isActive('Krokus')}" src="images/icons/winter.png"/><md-tooltip class="tooltipWinter">Winter</md-tooltip></a>
+        <a ng-click="query = 'PASEN'; setActive('Pasen')" ><img ng-class="{'activeSeason': isActive('Pasen')}" src="images/icons/lente.png"/><md-tooltip class="tooltipLente">Lente</md-tooltip></a>
+      </div>
+
+      <div class="ageFilter">
+        <md-text-float md-theme="red" class="ageInput" label="Leeftijd" ng-model="age"></md-text-float>
+      </div>
+
+    </md-card>
+    <div class="campWrapper" ng-repeat="camp in camps | filter: {period : query} | filter: ageFilter | orderBy: 'period'">
+        <a ng-href="#/camps/{{camp.id}}">
+            <md-card id="campCard" class="campCard" style="max-width:100%">
+                <div class="imgWrapper">
+                    <img src="http://project-groep6.azurewebsites.net/public/img/camps/{{camp.location}}" style="max-width: 100%;">
+                    <div class="description {{camp.period}}">
+                        <h2>{{camp.title}}</h2>
+                    </div>
+                </div>
+                <p>
+                    Periode?<span class="campInfo">{{camp.period}}</span>
+                </p>
+                <p id="loc">Locatie? <span class="campInfo">{{camp.city}}</span>
+                </p>
+                </p>
+                <p id="age">Leeftijd? <span class="campInfo">{{camp.minimumAge}} - {{camp.maximumAge}}</span>
+                </p>
+                <p>{{camp.promotext}}...</p>
+                <p>LEES MEER ></p>
+            </md-card>
+        </a>
+    </div>
+</md-content>

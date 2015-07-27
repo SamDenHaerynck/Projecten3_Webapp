@@ -1,0 +1,44 @@
+<md-content class="postPage">
+    <div id="contentWrapper">
+      <div id="infoWrapper">
+        <h3><img ng-src="images/icons/{{post.postType}}.png" class="icon"> {{post.title}}<span id="typeInfo"> dit is een {{ post.postType }}</span></h3>
+        <h4>Inhoud:</h4>
+        <p>{{post.text}}</p>
+        <div class="postPageActivity" ng-show="post.postType === 'activiteit'">
+          <h4>Locatie:</h4>
+          <p>{{post.location}}</p>
+          <h4>Datum:</h4>
+          <p>{{post.date | date:"dd/MM/yyyy"}}</p>
+          <h4>Startuur:</h4>
+          <p>{{post.startTime}}</p>
+          <h4>Einduur:</h4>
+          <p>{{post.endTime}}</p>
+        </div>
+      <h4 id="lastPost">Geplaatst door {{post.firstname}} {{post.lastname}} op {{post.timestampFormatted | date:"dd/MM/yyyy 'om' HH:mm"}}</h4>
+      </div>
+        <div id="commentContainer">
+
+          <div class="textareaGroup used" ng-form="commentForm">
+            <textarea id="textArea" ng-model="newComment.text" ng-focus="commentFocus = true" ng-blur="commentFocus = false" name="text" required></textarea>
+            <span class="textareaHighlight"></span>
+            <span class="textAreaBar"></span>
+            <label>Voeg een reactie toe</label>
+          </div>
+          <div ng-show="commentForm.text.$invalid && submitted" class="validationError">
+            <div ng-show="commentForm.text.$error.required">
+              Je reactie mag niet leeg zijn
+            </div>
+          </div>
+          <md-button md-theme="red" ng-show="checkText() || commentFocus" class="md-raised md-primary" ng-click="createComment()">Plaats reactie</md-button>
+          <div id="comments">
+            <h2>Reacties</h2>
+            <div ng-repeat="comment in comments">
+              <span id="name">{{comment.firstname}} {{comment.lastname}}</span>
+              <span id="date">{{comment.timestampFormatted | date:"dd/MM/yyyy 'om' HH:mm"}} </span>
+              <p>{{comment.text}}</p>
+            </div>
+            <div class="emptyList" ng-hide="comments.length">Geen reacties beschikbaar</div>
+          </div>
+        </div>
+    </div>
+</md-content>

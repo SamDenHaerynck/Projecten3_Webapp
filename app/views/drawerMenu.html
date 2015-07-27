@@ -1,0 +1,17 @@
+<section layout="horizontal" flex="100" class="sidenav-section" id="sidebar-left">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" component-id="left" is-locked-open="$media('lg')">
+        <md-content ng-controller="NavCtrl">
+			<a href="/"><img src="images/logo.jpg" hide-md/></a>
+			<ul id="sidenav-top-list">
+				<li><a href="/#/" class="home">Startpagina</a></li>
+				<li><a href="/#/camps" class="camps">Vakanties</a></li>
+        <li><a href="/#/contact" class="contact">Contact</a></li>
+				<li ng-show="isAuthorized(false)"><a href="/#/forum" class="forum">Forum</a></li>
+				<li ng-show="isAuthorized(true)"><a href="/#/managecamps" class="managecamps">Beheer kampen</a></li>
+        <li ng-show="isAuthorized(true)"><a href="/#/manageusers" class="manageusers">Beheer gebruikers</a></li>
+			</ul>
+
+        </md-content>
+
+    </md-sidenav>
+</section>

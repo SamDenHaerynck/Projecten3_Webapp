@@ -1,0 +1,85 @@
+<md-content md-theme="red">
+  <md-button id="newUser" class="md-raised md-primary"  ng-click="enableNewUser()">Nieuwe user</md-button>
+    <md-card ng-show="newUser.exists">
+      <md-content class="userCardBody" ng-form="newUserForm">
+        <md-text-float ng-model="newUser.firstname" label="Voornaam" name="firstname" required></md-text-float>
+        <div ng-show="newUserForm.firstname.$invalid && submitted" class="validationError">
+          <div ng-show="newUserForm.firstname.$error.required">
+              De voornaam moet ingevuld zijn
+          </div>
+        </div>
+        <md-text-float ng-model="newUser.lastname" label="Achternaam" name="lastname" required></md-text-float>
+        <div ng-show="newUserForm.lastname.$invalid && submitted" class="validationError">
+          <div ng-show="newUserForm.lastname.$error.required">
+              De familienaam moet ingevuld zijn
+          </div>
+        </div>
+        <md-text-float ng-model="newUser.email" label="E-mailadres" name="email" class="long" required emailaddress></md-text-float>
+        <div ng-show="newUserForm.email.$invalid && submitted" class="validationError">
+          <div ng-show="newUserForm.email.$error.required">
+              Het e-mailadres moet ingevuld zijn
+          </div>
+          <div ng-show="newUserForm.email.$error.emailaddress">
+              Dit moet een geldig e-mailadres zijn
+          </div>
+        </div>
+        <md-text-float ng-model="newUser.password" label="Wachtwoord" name="password" required passwordlength></md-text-float>
+        <div ng-show="newUserForm.password.$invalid && submitted" class="validationError">
+          <div ng-show="newUserForm.password.$error.required">
+              Het wachtwoord moet ingevuld zijn
+          </div>
+          <div ng-show="newUserForm.password.$error.passwordlength">
+              Het wachtwoord moet minstens 4 en mag maximaal 50 karakters bevatten
+          </div>
+        </div>
+        <md-checkbox ng-model="newUser.isAdmin" aria-label="isAdmin" ng-true-value="'1'" ng-false-value="'0'">
+          Is administrator
+        </md-checkbox>
+        <md-button class="md-raised md-primary" ng-click="create()">Opslaan</md-button>
+        <md-button class="md-raised md-primary" ng-click="cancel()">Annuleren</md-button>
+      </md-content>
+    </md-card>
+    <md-card class="userItem" ng-repeat="user in users" ng-form="userForm">
+      <a ng-click="changeUser(user.id)" class="noDecoration activeCard">
+        <md-content class="userCardHeader">
+          <h3>Voornaam: <br/>{{user.firstname}}</h3>
+          <h4>Naam: <br />{{user.lastname}}</h4>
+          <h4>E-mail: <br/>{{user.email}}</h4>
+        </md-content>
+        <md-content ng-show="currentUser === user.id" class="userCardBody">
+          <md-text-float ng-model="user.firstname" label="Voornaam" name="firstname" required></md-text-float>
+          <div ng-show="userForm.firstname.$invalid && submitted" class="validationError">
+            <div ng-show="userForm.firstname.$error.required">
+                De voornaam moet ingevuld zijn
+            </div>
+          </div>
+          <md-text-float ng-model="user.lastname" label="Achternaam" name="lastname" required></md-text-float>
+          <div ng-show="userForm.lastname.$invalid && submitted" class="validationError">
+            <div ng-show="userForm.lastname.$error.required">
+                De familienaam moet ingevuld zijn
+            </div>
+          </div>
+          <md-text-float ng-model="user.email" label="E-mailadres" name="email" required emailaddress></md-text-float>
+          <div ng-show="userForm.email.$invalid && submitted" class="validationError">
+            <div ng-show="userForm.email.$error.required">
+                Het e-mailadres moet ingevuld zijn
+            </div>
+            <div ng-show="userForm.email.$error.emailaddress">
+                Dit moet een geldig e-mailadres zijn
+            </div>
+          </div>
+          <md-text-float ng-model="user.password" label="Wachtwoord" name="password" passwordlength></md-text-float>
+          <div ng-show="userForm.password.$invalid && submitted" class="validationError">
+            <div ng-show="userForm.password.$error.passwordlength">
+                Het wachtwoord moet minstens 4 en mag maximaal 50 karakters bevatten
+            </div>
+          </div>
+          <md-checkbox ng-model="user.isAdmin" aria-label="isAdmin" ng-true-value="'1'" ng-false-value="'0'">
+            Is administrator
+          </md-checkbox>
+          <md-button class="md-raised md-primary" ng-click="update(user.id, userForm, user)">Opslaan</md-button>
+          <md-button class="md-raised md-primary" ng-click="remove(user.id)">Verwijderen</md-button>
+        </md-content>
+      </a>
+    </md-card>
+</md-content>

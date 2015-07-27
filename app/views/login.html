@@ -1,0 +1,27 @@
+<div ng-controller="LoginCtrl" layout="vertical" layout-fill id="loginWrapper">
+    <form class="loginform" ng-submit="login()">
+
+        <md-text-float md-theme="red" label="E-mailadres" ng-model="user.email"></md-text-float>
+        <md-text-float md-theme="red" label="Wachtwoord" ng-model="user.password" type="password"></md-text-float>
+        <a href="" ng-click="show = !show" class="passwordReset">Wachtwoord vergeten?</a>
+        <p>
+            <span ng-show="loginError" class="validationError" ng-click="loginError = false">
+            	E-mailadres of wachtwoord is verkeerd.
+            </span>
+        </p>
+        <md-button ng-hide="show" class="md-raised md-primary" md-theme="red" ng-click="">Inloggen</md-button>
+    </form>
+
+    <div ng-show="show" md-theme="red">
+        <form class="passwordResetForm" md-theme="red" name="passwordResetForm" novalidate>
+            <md-text-float label="E-mailadres" ng-model="userEmail.email" type="email" name="email" required emailaddress></md-text-float>
+            <div ng-show="passwordResetForm.email.$invalid && submitted" class="validationError">
+                <div ng-show="passwordResetForm.email.$error.required">
+                    Het ingevulde e-mailadres is niet geldig.
+                </div>
+            </div>
+            <md-button class="md-raised md-primary" ng-click="resetPassword()">Nieuw wachtwoord aanvragen</md-button>
+        </form>
+    </div>
+    </p>
+</div>
